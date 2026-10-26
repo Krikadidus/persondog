@@ -1,7 +1,6 @@
 package com.example.persondog;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -21,5 +20,20 @@ public class Person {
     private String id;
     private String name;
     private int age;
+
+    @ManyToMany( cascade = CascadeType.ALL, fetch= FetchType.LAZY)
+    @JoinTable( name = "PersonAndDogs",
+            joinColumns = @JoinColumn(name = "Person_id"),
+            inverseJoinColumns = @JoinColumn (name ="Dog_id"))
+    private List <Dog> dogs = new ArrayList<>();
+
+    public Person(String id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+    public void addDog(Dog dog){
+        dogs.add(dog);
+    }
 
 }
