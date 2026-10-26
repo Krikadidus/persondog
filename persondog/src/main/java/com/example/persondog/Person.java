@@ -4,9 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -21,5 +18,4 @@ public class Person {
     private String id;
     private String name;
     private int age;
-
 }

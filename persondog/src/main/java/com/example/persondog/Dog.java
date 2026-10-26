@@ -1,7 +1,6 @@
 package com.example.persondog;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -23,4 +22,7 @@ public class Dog {
     private String breed;
     private int age;
 
+    @ManyToOne (fetch= FetchType.LAZY)
+    @JoinColumn (name = "Person_FK")
+    private Person personID;
 }
