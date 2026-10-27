@@ -1,7 +1,6 @@
 package com.example.persondog;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -22,5 +21,17 @@ public class Dog {
     private String name;
     private String breed;
     private int age;
+    @OneToMany (mappedBy ="DogID", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    private List<PersonAndDog> listOfPersonAndDogs = new ArrayList<>();
 
+    public Dog(String id, String name, String rasa, int i) {
+        this.id = id;
+        this.name = name;
+        this.breed = rasa;
+        this.age = i;
+    }
+
+    public void add(PersonAndDog personanddog) {
+        listOfPersonAndDogs.add(personanddog);
+    }
 }

@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.sql.SQLOutput;
+
 @SpringBootApplication
 public class PersondogApplication {
 
@@ -22,11 +24,9 @@ public class PersondogApplication {
             Dog dog2 = new Dog("2", "Ruk", "shpitz", 2);
 
             PersonAndDog first = new PersonAndDog("1",person, dog);
-            PersonAndDog third = new PersonAndDog("2",person, dog2);
-            PersonAndDog fourth = new PersonAndDog("3",person2, dog);
-            PersonAndDog second = new PersonAndDog("4",person2, dog2);
-
-
+            PersonAndDog second = new PersonAndDog("2",person, dog2);
+            PersonAndDog third = new PersonAndDog("3",person2, dog);
+            PersonAndDog fourth= new PersonAndDog("4",person2, dog2);
 
             personRepository.save(person2);
             personRepository.save(person);
@@ -36,6 +36,22 @@ public class PersondogApplication {
             personAndDogRepository.save(second);
             personAndDogRepository.save(third);
             personAndDogRepository.save(fourth);
+
+            person.add(first);
+            person.add(second);
+            person2.add(fourth);
+            person2.add(third);
+
+            dog.add(first);
+            dog.add(third);
+            dog2.add(second);
+            dog2.add(fourth);
+
+            System.out.println(personRepository.findById("1"));
+
+
+
+
 
         };
     }
