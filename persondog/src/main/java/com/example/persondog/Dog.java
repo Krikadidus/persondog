@@ -2,6 +2,8 @@ package com.example.persondog;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -22,5 +24,7 @@ public class Dog {
     private String name;
     private String breed;
     private int age;
-
+    @OneToOne
+    @JoinColumn (name ="Owner_ID")
+    private Person owner;
 }
